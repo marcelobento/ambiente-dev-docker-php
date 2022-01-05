@@ -1,0 +1,23 @@
+version: "3.8"
+ 
+services:
+  mysql:
+    container_name: dev_mysql
+    image: mysql:5.7.20
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123.456
+      
+  postgres:
+    container_name: dev_postgres
+    image: postgres
+    volumes:
+      - ./data/postgresql:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123.456
