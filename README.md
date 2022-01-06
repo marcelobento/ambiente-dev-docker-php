@@ -1,5 +1,4 @@
-# ambiente-dev-docker-php
-Ambiente de desenvolvimento com Docker [PHP 7.4 + NODE]
+Ambiente de desenvolvimento com Docker [PHP 7.4 + Nginx + NODE + Mysql + Postgresql + Oracle]
 
 # Instalação
 
@@ -12,7 +11,7 @@ docker pull composer:2
 # Fazer build da imagem do PHP
 Navegue até:
 ```
-cd ./docker-builds/php
+cd ./docker/php
 ```
 Para evitar problemas com download, tenha disponivel os arquivos 
 * oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
@@ -25,7 +24,7 @@ docker build --file php.dockerfile -t php:7.4-fpm .
 # Fazer build da imagem do NGINX 
 Navegue até:
 ```
-cd ./docker-builds/nginx
+cd ./docker/nginx
 ```
 Execute o comando:
 ```cmd
@@ -35,7 +34,7 @@ docker build -f .\nginx.dockerfile -t nginx:1.19 .
 # Fazer build da imagem do NODE
 Navegue até:
 ```
-cd ./docker-builds/node
+cd ./docker/node
 ```
 Execute o comando:
 ```cmd
@@ -60,6 +59,18 @@ A imagem do NODE aponta está com o WORKDIR mapeado para:
 ```
 /app
 ```
+
+# Banco de Dados
+Navegue até:
+```
+cd ./docker/database
+```
+Digite o comando
+```cmd
+docker-compose up -d
+```
+Vai subir os container do mysql e postgresql
+
 
 # Finalizando
 Depois de tudo buildado e configurado, agora rode o comando:
