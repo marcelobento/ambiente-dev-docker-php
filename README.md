@@ -16,6 +16,7 @@ cd ./docker/php
 Para evitar problemas com download, tenha disponivel os arquivos 
 * oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm
 * oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
+```
 Execute o comando:
 ```cmd
 docker build --file php.dockerfile -t php:7.4-fpm .
@@ -38,7 +39,7 @@ cd ./docker/node
 ```
 Execute o comando:
 ```cmd
-docker build --file react.dockerfile -t node:14 .
+docker build --file node.dockerfile -t node:14 .
 ```
 
 # Estrutura de pastas do projeto
