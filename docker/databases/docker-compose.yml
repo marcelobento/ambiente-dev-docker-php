@@ -10,6 +10,8 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: 123.456
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
       
   postgres:
     container_name: dev_postgres
@@ -21,3 +23,15 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123.456
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  adminer:
+    container_name: dev_adminer
+    image: adminer
+    volumes:
+      - "./adminer/adminer.css:/var/www/html/adminer.css"
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
