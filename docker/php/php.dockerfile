@@ -47,8 +47,13 @@ RUN yes | pecl install xdebug \
 ## move php-ini-developemnt to php.ini
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
+## configure GD
+RUN docker-php-ext-configure gd \
+      --with-freetype=/usr/include/ \
+      --with-jpeg=/usr/include/
+
 ## Finaly enable and install all in PHP
-RUN docker-php-ext-install -j$(nproc) mysqli pgsql oci8 pdo pdo_mysql pdo_pgsql pdo_oci soap ldap  \
-    && docker-php-ext-enable xdebug \
+RUN docker-php-ext-install -j$(nproc) mysqli pgsql oci8 pdo pdo_mysql pdo_pgsql pdo_oci soap ldap gd \
+    && docker-php-ext-enable xdebug gd \
     && rm -R /tmp/* \ 
     && apt clean 
